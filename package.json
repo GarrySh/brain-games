@@ -1,0 +1,30 @@
+{
+  "name": "project-lvl1-s120",
+  "version": "1.0.0",
+  "description": "My first Hexlet project",
+  "main": "index.js",
+  "bin": {
+    "brain-games": "dist/bin/brain-games.js"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "babel-node": "babel-node",
+    "prepublish": "npm run build"
+  },
+  "devDependencies" : {
+    "babel-cli": "latest",
+    "babel-core": "latest",
+    "babel-preset-env": "latest",
+    "babel-preset-stage-0": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GarrySh/project-lvl1-s120.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GarrySh/project-lvl1-s120/issues"
+  },
+  "homepage": "https://github.com/GarrySh/project-lvl1-s120#readme"
+}
