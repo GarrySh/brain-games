@@ -1,6 +1,6 @@
 {
   "name": "project-lvl1-s120",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "My first Hexlet project",
   "main": "index.js",
   "bin": {
@@ -11,7 +11,7 @@
     "babel-node": "babel-node",
     "prepublish": "npm run build"
   },
-  "devDependencies" : {
+  "devDependencies": {
     "babel-cli": "latest",
     "babel-core": "latest",
     "babel-preset-env": "latest",
