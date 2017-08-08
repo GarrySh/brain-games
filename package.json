@@ -1,6 +1,6 @@
 {
   "name": "project-lvl1-s120",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "My first Hexlet project",
   "main": "index.js",
   "bin": {
@@ -17,11 +17,14 @@
     "babel-preset-env": "latest",
     "babel-preset-stage-0": "latest"
   },
+  "dependencies": {
+    "readline-sync": "^1.4.7"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GarrySh/project-lvl1-s120.git"
   },
-  "author": "",
+  "author": "Garry Sh",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/GarrySh/project-lvl1-s120/issues"
