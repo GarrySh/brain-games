@@ -2,5 +2,6 @@
 import { askUserName, showGreeting, askOddQuestions, showMessage } from '..';
 
 showMessage('Welcome to the Brain Games!\nAnswer "yes" if number even otherwise answer "no".\n');
-showGreeting();
-// askOddQuestions();
+const userName = askUserName();
+showGreeting(userName);
+askOddQuestions(userName);

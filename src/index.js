@@ -7,9 +7,12 @@ const askQuestion = (questionForUser) => {
 
 const showMessage = (message) => { console.log(message); };
 
-const askUserName = () => { askQuestion('May I have your name? '); };
+const askUserName = () => {
+  const result = askQuestion('May I have your name? ');
+  return result;
+};
 
-const showGreeting = () => { showMessage(`Hello, ${askUserName()}!\n`); };
+const showGreeting = (userName) => { showMessage(`Hello, ${userName}!\n`); };
 
 const getRandomNumber = () => {
   const MINVALUE = 1;
@@ -18,18 +21,26 @@ const getRandomNumber = () => {
   return Math.round(randomNumber);
 };
 
-const askOddQuestions = () => {
+const askOddQuestions = (userName) => {
   const NUMBEROFQUESTIONS = 3;
-  const currentNumber = getRandomNumber();
-  const isOddNumber = (currentNumber % 2 === 0) ? 'yes' : 'no';
-  showMessage(`Question: ${currentNumber}`);
-  const userChoice = askQuestion('Your answer: ');
-  if (userChoice === isOddNumber) {
-    showMessage('Correct!');
-  } else {
-    showMessage(`'${userChoice}' is wrong answer ;(. Correct answer was '${isOddNumber}'.\nLet's try again, ${askUserName}!`);
+  let i = 0;
+  while (i <= NUMBEROFQUESTIONS) {
+    if (i === NUMBEROFQUESTIONS) {
+      showMessage(`Congratulations, ${userName}!`);
+      break;
+    }
+    const currentNumber = getRandomNumber();
+    const isOddNumber = (currentNumber % 2 === 0) ? 'yes' : 'no';
+    showMessage(`Question: ${currentNumber}`);
+    const userChoice = askQuestion('Your answer: ');
+    if (userChoice === isOddNumber) {
+      showMessage('Correct!');
+    } else {
+      showMessage(`'${userChoice}' is wrong answer ;(. Correct answer was '${isOddNumber}'.\nLet's try again, ${userName}!`);
+      break;
+    }
+    i += 1;
   }
 };
-
 
 export { askUserName, showGreeting, askOddQuestions, showMessage };

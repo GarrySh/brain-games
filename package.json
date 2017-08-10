@@ -1,6 +1,6 @@
 {
   "name": "project-lvl1-s120",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "My first Hexlet project",
   "main": "index.js",
   "bin": {
