@@ -1,7 +1,4 @@
 #!/usr/bin/env node
-import { askUserName, showGreeting, askOddQuestions, showMessage } from '..';
+import { startEvenGame } from '..';
 
-showMessage('Welcome to the Brain Games!\nAnswer "yes" if number even otherwise answer "no".\n');
-const userName = askUserName();
-showGreeting(userName);
-askOddQuestions(userName);
+startEvenGame();

@@ -14,21 +14,19 @@ const askUserName = () => {
 
 const showGreeting = (userName) => { showMessage(`Hello, ${userName}!\n`); };
 
+const minValue = 1;
+const maxValue = 39;
+
 const getRandomNumber = () => {
-  const MINVALUE = 1;
-  const MAXVALUE = 39;
-  const randomNumber = (Math.random() * (MAXVALUE - MINVALUE)) + MINVALUE;
+  const randomNumber = (Math.random() * (maxValue - minValue)) + minValue;
   return Math.round(randomNumber);
 };
 
+const numberOfQuestions = 3;
+
 const askOddQuestions = (userName) => {
-  const NUMBEROFQUESTIONS = 3;
   let i = 0;
-  while (i <= NUMBEROFQUESTIONS) {
-    if (i === NUMBEROFQUESTIONS) {
-      showMessage(`Congratulations, ${userName}!`);
-      break;
-    }
+  while (i < numberOfQuestions) {
     const currentNumber = getRandomNumber();
     const isOddNumber = (currentNumber % 2 === 0) ? 'yes' : 'no';
     showMessage(`Question: ${currentNumber}`);
@@ -37,10 +35,24 @@ const askOddQuestions = (userName) => {
       showMessage('Correct!');
     } else {
       showMessage(`'${userChoice}' is wrong answer ;(. Correct answer was '${isOddNumber}'.\nLet's try again, ${userName}!`);
-      break;
+      return;
     }
     i += 1;
   }
+  showMessage(`Congratulations, ${userName}!`);
 };
 
-export { askUserName, showGreeting, askOddQuestions, showMessage };
+const startEvenGame = () => {
+  showMessage('Welcome to the Brain Games!\n');
+  const userName = askUserName();
+  showGreeting(userName);
+  askOddQuestions(userName);
+};
+
+const startBrainGames = () => {
+  showMessage('Welcome to the Brain Games!\n');
+  const userName = askUserName();
+  showGreeting(userName);
+};
+
+export { startEvenGame, startBrainGames, askUserName, showGreeting, askOddQuestions, showMessage };
