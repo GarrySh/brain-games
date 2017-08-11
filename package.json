@@ -1,11 +1,12 @@
 {
   "name": "project-lvl1-s120",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "My first Hexlet project",
   "main": "index.js",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
-    "brain-even": "dist/bin/brain-even.js"
+    "brain-even": "dist/bin/brain-even.js",
+    "brain-calc": "dist/bin/brain-calc.js"
   },
   "scripts": {
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
@@ -24,7 +25,8 @@
     "eslint-plugin-import": "^2.7.0"
   },
   "dependencies": {
-    "readline-sync": "^1.4.7"
+    "readline-sync": "^1.4.7",
+    "hexlet-pairs": "^1.0.4"
   },
   "repository": {
     "type": "git",
