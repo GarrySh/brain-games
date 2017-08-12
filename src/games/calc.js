@@ -1,23 +1,19 @@
-import { cons, car, cdr } from 'hexlet-pairs';
-import { getRandomNumber, makeGame } from '..';
+import { cons, car, cdr } from 'hexlet-pairs'; // eslint-disable-line
+import makeGame from '..';
+import getRandomNumber from '../utils';
 
-const getAction = (value1, value2) => {
+const getMathExpression = (value1, value2) => {
   const actionRandom = getRandomNumber(1, 3);
-  if (actionRandom === 1) { return cons(value1 + value2, `${value1} + ${value2}`); }
-  if (actionRandom === 2) { return cons(value1 - value2, `${value1} - ${value2}`); }
-  return cons(value1 * value2, `${value1} * ${value2}`);
+  if (actionRandom === 1) { return cons(`${value1} + ${value2}`, value1 + value2); }
+  if (actionRandom === 2) { return cons(`${value1} - ${value2}`, value1 - value2); }
+  return cons(`${value1} * ${value2}`, value1 * value2);
 };
 
-const gameMessage = 'What is the result of the expression?\n';
-const gameParam = () => {
+const gameRule = 'What is the result of the expression?\n';
+const getGameParam = () => {
   const value1 = getRandomNumber(1, 10);
-  const value2 = getRandomNumber(1, 10);
-  const currentAction = getAction(value1, value2);
-  const currentQuestion = cdr(currentAction);
-  const currentAnswer = String(car(currentAction));
-  return cons(currentQuestion, currentAnswer);
+  const value2 = getRandomNumber(2, 15);
+  return getMathExpression(value1, value2);
 };
 
-export default () => {
-  makeGame(gameMessage, gameParam);
-};
+export default () => { makeGame(gameRule, getGameParam); };

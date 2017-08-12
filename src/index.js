@@ -1,10 +1,5 @@
-import readlineSync from 'readline-sync';
-import { car, cdr } from 'hexlet-pairs';
-
-const getRandomNumber = (minValue, maxValue) => {
-  const randomNumber = (Math.random() * (maxValue - minValue)) + minValue;
-  return Math.round(randomNumber);
-};
+import readlineSync from 'readline-sync'; // eslint-disable-line
+import { car, cdr } from 'hexlet-pairs'; // eslint-disable-line
 
 const numberOfRounds = 3;
 
@@ -13,20 +8,24 @@ const makeGame = (gameMessage, gameOptions) => {
   console.log(gameMessage);
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!\n`);
-  let i = 0;
-  while (i < numberOfRounds) {
+
+  const iter = (round) => {
+    if (round === 0) {
+      return console.log(`Congratulations, ${userName}!`);
+    }
     const currentOption = gameOptions();
-    console.log(`Question: ${car(currentOption)}`);
-    const userChoice = readlineSync.question('Your answer: ');
-    if (userChoice === cdr(currentOption)) {
+    const currentAnswer = String(cdr(currentOption));
+    const currentQuestion = car(currentOption);
+    console.log(`Question: ${currentQuestion}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+    if (userAnswer === currentAnswer) {
       console.log('Correct!');
     } else {
-      console.log(`'${userChoice}' is wrong answer ;(. Correct answer was '${cdr(currentOption)}'.\nLet's try again, ${userName}!`);
-      return;
+      return console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${currentAnswer}'.\nLet's try again, ${userName}!`);
     }
-    i += 1;
-  }
-  console.log(`Congratulations, ${userName}!`);
+    return iter(round - 1);
+  };
+  return iter(numberOfRounds);
 };
 
-export { makeGame, getRandomNumber };
+export default makeGame;
