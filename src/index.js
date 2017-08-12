@@ -3,27 +3,31 @@ import { car, cdr } from 'hexlet-pairs'; // eslint-disable-line
 
 const numberOfRounds = 3;
 
-const makeGame = (gameMessage, gameOptions) => {
+const makeGame = (gameRule, getQuestionAndAnswer) => {
   console.log('Welcome to the Brain Games!');
-  console.log(gameMessage);
+  console.log(gameRule);
+  console.log('');
   const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!\n`);
-
-  const iter = (round) => {
-    if (round === 0) {
-      return console.log(`Congratulations, ${userName}!`);
+  console.log(`Hello, ${userName}!`);
+  console.log('');
+  const iter = (count) => {
+    if (count === 0) {
+      console.log(`Congratulations, ${userName}!`);
+      return undefined;
     }
-    const currentOption = gameOptions();
-    const currentAnswer = String(cdr(currentOption));
-    const currentQuestion = car(currentOption);
+    const currentQuestionAndAnswer = getQuestionAndAnswer();
+    const currentAnswer = String(cdr(currentQuestionAndAnswer));
+    const currentQuestion = car(currentQuestionAndAnswer);
     console.log(`Question: ${currentQuestion}`);
     const userAnswer = readlineSync.question('Your answer: ');
     if (userAnswer === currentAnswer) {
       console.log('Correct!');
     } else {
-      return console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${currentAnswer}'.\nLet's try again, ${userName}!`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${currentAnswer}'.`);
+      console.log(`Let's try again, ${userName}!`);
+      return undefined;
     }
-    return iter(round - 1);
+    return iter(count - 1);
   };
   return iter(numberOfRounds);
 };

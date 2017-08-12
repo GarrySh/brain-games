@@ -30,16 +30,11 @@ const getBalance = (number) => {
   return iter(numberLength, '');
 };
 
-const getQuestionAndAnswer = (value) => {
-  const question = value;
-  const answer = getBalance(value);
+const gameRule = 'Balance the given number.';
+const getQuestionAndAnswer = () => {
+  const question = getRandomNumber(100, 1999);
+  const answer = getBalance(question);
   return cons(question, answer);
 };
 
-const gameRule = 'Balance the given number.\n';
-const gameParam = () => {
-  const value = getRandomNumber(100, 1999);
-  return getQuestionAndAnswer(value);
-};
-
-export default () => { makeGame(gameRule, gameParam); };
+export default () => { makeGame(gameRule, getQuestionAndAnswer); };
