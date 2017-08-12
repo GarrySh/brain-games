@@ -20,7 +20,7 @@ const getQuestionAndAnswer = () => {
   const value1 = getRandomNumber(1, 40);
   const value2 = getRandomNumber(2, 50);
   const question = `${value1} ${value2}`;
-  const answer = getGcd(value1, value2);
+  const answer = String(getGcd(value1, value2));
   return cons(question, answer);
 };
 

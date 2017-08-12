@@ -20,7 +20,7 @@ const getProgression = (number) => {
 
 const gameRule = 'Balance the given number.';
 const getQuestionAndAnswer = () => {
-  const answer = getRandomNumber(20, 100);
+  const answer = String(getRandomNumber(20, 100));
   const question = getProgression(answer);
   return cons(question, answer);
 };

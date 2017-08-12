@@ -16,7 +16,7 @@ const makeGame = (gameRule, getQuestionAndAnswer) => {
       return undefined;
     }
     const currentQuestionAndAnswer = getQuestionAndAnswer();
-    const currentAnswer = String(cdr(currentQuestionAndAnswer));
+    const currentAnswer = cdr(currentQuestionAndAnswer);
     const currentQuestion = car(currentQuestionAndAnswer);
     console.log(`Question: ${currentQuestion}`);
     const userAnswer = readlineSync.question('Your answer: ');
