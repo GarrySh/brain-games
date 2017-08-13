@@ -1,4 +1,4 @@
-import { cons, car, cdr } from 'hexlet-pairs'; // eslint-disable-line
+import { cons } from 'hexlet-pairs';
 import makeGame from '..';
 import getRandomNumber from '../utils';
 
@@ -13,14 +13,14 @@ const getSumOfCharInNumber = (number) => {
   return iter(number, 0);
 };
 
-const getBalance = (number) => {
+const getBalanceNumber = (number) => {
   const numberLength = String(number).length;
   const sumOfCharInNumber = getSumOfCharInNumber(number);
   const averageNumber = Math.floor(sumOfCharInNumber / numberLength);
   const balance = sumOfCharInNumber % numberLength;
   const iter = (len, acc) => {
     if (len === 0) {
-      return acc;
+      return Number(acc);
     }
     if (len > balance) {
       return iter(len - 1, acc + averageNumber);
@@ -33,8 +33,8 @@ const getBalance = (number) => {
 const gameRule = 'Balance the given number.';
 const getQuestionAndAnswer = () => {
   const question = getRandomNumber(100, 1999);
-  const answer = getBalance(question);
+  const answer = String(getBalanceNumber(question));
   return cons(question, answer);
 };
 
-export default () => { makeGame(gameRule, getQuestionAndAnswer); };
+export default () => makeGame(gameRule, getQuestionAndAnswer);

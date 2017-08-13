@@ -1,4 +1,4 @@
-import { cons, car, cdr } from 'hexlet-pairs'; // eslint-disable-line
+import { cons } from 'hexlet-pairs';
 import makeGame from '..';
 import getRandomNumber from '../utils';
 
@@ -16,4 +16,4 @@ const getQuestionAndAnswer = () => {
   return cons(`${value1} * ${value2}`, String(value1 * value2));
 };
 
-export default () => { makeGame(gameRule, getQuestionAndAnswer); };
+export default () => makeGame(gameRule, getQuestionAndAnswer);
