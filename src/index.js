@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 import { car, cdr } from 'hexlet-pairs';
 
-const iterGameRounds = (count, getQuestionAndAnswer) => {
+const runGameRounds = (count, getQuestionAndAnswer) => {
   if (count === 0) {
     return true;
   }
@@ -16,7 +16,7 @@ const iterGameRounds = (count, getQuestionAndAnswer) => {
     console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${currentAnswer}'.`);
     return false;
   }
-  return iterGameRounds(count - 1, getQuestionAndAnswer);
+  return runGameRounds(count - 1, getQuestionAndAnswer);
 };
 
 const numberOfRounds = 3;
@@ -28,8 +28,8 @@ const makeGame = (gameRule, getQuestionAndAnswer) => {
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   console.log('');
-  const gameResult = iterGameRounds(numberOfRounds, getQuestionAndAnswer);
-  if (gameResult === true) {
+  const isGameFinish = runGameRounds(numberOfRounds, getQuestionAndAnswer);
+  if (isGameFinish) {
     console.log(`Congratulations, ${userName}!`);
   } else {
     console.log(`Let's try again, ${userName}!`);
